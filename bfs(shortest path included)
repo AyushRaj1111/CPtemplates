@@ -2,10 +2,10 @@ vector<vector<int>> adj;  // adjacency list representation
 int n; // number of nodes
 //int s;  source vertex
 
-void bfs(vector<int> & d, vector <int> & p,int s,int n)
+void bfs(vector<int> & d, vector <int> & p,int s,int n,vector<bool> &used)
 {
 queue<int> q;
-vector<bool> used(n);
+//vector<bool> used(n);
 //d to store path
 q.push(s);
 used[s] = true;
@@ -23,7 +23,7 @@ while (!q.empty()) {
     }
 }}
 
-vector<int> restore_path(vector<int> const& p) {
+vector<int> restore_path(vector<int> const& p,int u,vector<bool> &used) {
 if (!used[u]) {
     cout << "No path!";
 } else {
@@ -31,7 +31,7 @@ if (!used[u]) {
     for (int v = u; v != -1; v = p[v])
         path.push_back(v);
     reverse(path.begin(), path.end());
-    cout << "Path: ";
+    //cout << "Path: ";
     for (int v : path)
         cout << v << " ";
 }
